@@ -37,4 +37,14 @@ node default {
   # This is where you can declare classes for all nodes.
   # Example:
   #   class { 'my_class': }
+
+  class { '::splunk::params':
+    build => 'f44afce176d0',
+  }
+
+  class { '::splunk::forwarder':
+    purge_inputs => true,
+    purge_outputs => true,
+    server => '192.168.0.2',
+  }
 }
