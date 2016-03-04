@@ -41,5 +41,5 @@ mod 'pltraining-rbac',
   :ref    => '2f60e1789a721ce83f8df061e13f8bf81cd4e4ce'
 
 mod 'splunk',
-  :git => 'https://github.com/puppetlabs-operations/puppetlabs-splunk',
-  :ref => '7e6c09aa470b1126b43563d6ccb5679bb12af718'
+  :git    => 'https://github.com/puppetlabs-operations/puppetlabs-splunk',
+  :branch => 'improved_module_test'
