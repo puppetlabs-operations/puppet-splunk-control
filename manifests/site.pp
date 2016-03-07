@@ -38,23 +38,36 @@ node default {
   # Example:
   #   class { 'my_class': }
 
-  class { '::splunk::params':
-    build => 'f44afce176d0',
-    src_root => 'puppet:///modules/splunk_packages',
-    server => '192.168.0.2',
-  }
-  
-  class { '::splunk::forwarder':
-    purge_inputs => true,
-    purge_outputs => true,
-    pkg_provider => 'rpm',
-  }
-  
-  @splunkforwarder_input { 'pe-logs':
-    section => 'monitor:///var/log/puppetlabs',
-    setting => 'recursive',
-    value => true,
-    tag => 'splunk_forwarder',
+  if $::hostname =~ /^pe-.*/ {
+    class { '::splunk::params':
+      build => 'f44afce176d0',
+      src_root => 'puppet:///modules/splunk_packages',
+      server => '192.168.0.2',
+    }
+
+    class { '::splunk::forwarder':
+      purge_inputs => true,
+      purge_outputs => true,
+      pkg_provider => 'rpm',
+    }
+
+    @splunkforwarder_input { 'pe-logs':
+      section => 'monitor:///var/log/puppetlabs',
+      setting => 'recursive',
+      value => true,
+      tag => 'splunk_forwarder',
+    }
   }
 
+  if $::hostname =~ /^splunk-.*/ {
+
+    class { '::splunk::params':
+      build => 'f44afce176d0',
+      src_root => 'puppet:///modules/splunk_packages',
+    }
+
+    class { '::splunk':
+      pkg_provider => 'rpm',
+    }
+  }
 }
