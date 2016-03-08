@@ -50,13 +50,6 @@ node default {
       purge_outputs => true,
       pkg_provider => 'rpm',
     }
-
-    @splunkforwarder_input { 'pe-logs':
-      section => 'monitor:///var/log/puppetlabs',
-      setting => 'recursive',
-      value => true,
-      tag => 'splunk_forwarder',
-    }
   }
 
   if $::hostname =~ /^splunk-.*/ {
