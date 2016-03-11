@@ -73,7 +73,7 @@ node default {
     }
 
     @splunkforwarder_input { 'puppetserver-access-sourcetype':
-      section => 'monitor:///var/log/puppetlabs/puppetserver/puppetserver.log',
+      section => 'monitor:///var/log/puppetlabs/puppetserver/puppetserver-access.log',
       setting => 'sourcetype',
       value   => 'puppetserver_access',
       tag     => 'splunk_forwarder'
