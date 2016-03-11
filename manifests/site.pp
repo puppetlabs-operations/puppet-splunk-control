@@ -50,6 +50,92 @@ node default {
       purge_outputs => true,
       pkg_provider => 'rpm',
     }
+
+    @splunkforwarder_input { 'puppetserver-index':
+      section => 'monitor:///var/log/puppetlabs/puppetserver/puppetserver.log',
+      setting => 'index',
+      value   => 'puppet-enterprise',
+      tag     => 'splunk_forwarder'
+    }
+
+    @splunkforwarder_input { 'puppetserver-sourcetype':
+      section => 'monitor:///var/log/puppetlabs/puppetserver/puppetserver.log',
+      setting => 'sourcetype',
+      value   => 'puppetserver',
+      tag     => 'splunk_forwarder'
+    }
+
+    @splunkforwarder_input { 'puppetserver-access-index':
+      section => 'monitor:///var/log/puppetlabs/puppetserver/puppetserver-access.log',
+      setting => 'index',
+      value   => 'puppet-enterprise',
+      tag     => 'splunk_forwarder'
+    }
+
+    @splunkforwarder_input { 'puppetserver-access-sourcetype':
+      section => 'monitor:///var/log/puppetlabs/puppetserver/puppetserver.log',
+      setting => 'sourcetype',
+      value   => 'puppetserver_access',
+      tag     => 'splunk_forwarder'
+    }
+
+    @splunkforwarder_input { 'puppetdb-index':
+      section => 'monitor:///var/log/puppetlabs/puppetdb/puppetdb.log',
+      setting => 'index',
+      value   => 'puppet-enterprise',
+      tag     => 'splunk_forwarder'
+    }
+
+    @splunkforwarder_input { 'puppetdb-sourcetype':
+      section => 'monitor:///var/log/puppetlabs/puppetdb/puppetdb.log',
+      setting => 'sourcetype',
+      value   => 'puppetdb',
+      tag     => 'splunk_forwarder'
+    }
+
+    @splunkforwarder_input { 'puppetdb-access-index':
+      section => 'monitor:///var/log/puppetlabs/puppetdb/puppetdb-access.log',
+      setting => 'index',
+      value   => 'puppet-enterprise',
+      tag     => 'splunk_forwarder'
+    }
+
+    @splunkforwarder_input { 'puppetdb-access-sourcetype':
+      section => 'monitor:///var/log/puppetlabs/puppetdb/puppetdb-access.log',
+      setting => 'sourcetype',
+      value   => 'puppetdb_access',
+      tag     => 'splunk_forwarder'
+    }
+
+
+    @splunkforwarder_input { 'consoleservices-index':
+      section => 'monitor:///var/log/puppetlabs/console-services/console-services.log',
+      setting => 'index',
+      value   => 'puppet-enterprise',
+      tag     => 'splunk_forwarder'
+    }
+
+    @splunkforwarder_input { 'consoleservices-sourcetype':
+      section => 'monitor:///var/log/puppetlabs/console-services/console-services.log',
+      setting => 'sourcetype',
+      value   => 'consoleservices',
+      tag     => 'splunk_forwarder'
+    }
+
+    @splunkforwarder_input { 'consoleservices-access-index':
+      section => 'monitor:///var/log/puppetlabs/console-services/console-services-access.log',
+      setting => 'index',
+      value   => 'puppet-enterprise',
+      tag     => 'splunk_forwarder'
+    }
+
+    @splunkforwarder_input { 'consoleservices-access-sourcetype':
+      section => 'monitor:///var/log/puppetlabs/console-services/console-services-access.log',
+      setting => 'sourcetype',
+      value   => 'consoleservices_access',
+      tag     => 'splunk_forwarder'
+    }
+
   }
 
   if $::hostname =~ /^splunk-.*/ {
