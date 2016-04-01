@@ -141,7 +141,6 @@ node default {
   if $::hostname =~ /^splunk-.*/ {
 
     class { '::splunk::params':
-      build => 'f44afce176d0',
       src_root => 'puppet:///modules/splunk_packages',
     }
 
